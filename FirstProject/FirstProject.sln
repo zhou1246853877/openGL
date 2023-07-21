@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Textures", "Textures\Textur
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Transformations", "Transformations\Transformations.vcxproj", "{2661A3D0-B981-4AFB-843A-403ABE4DEF82}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Coordinate Systems", "Coordinate Systems\Coordinate Systems.vcxproj", "{9C1BBF58-1670-449B-9DFC-42897630ABBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{2661A3D0-B981-4AFB-843A-403ABE4DEF82}.Release|x64.Build.0 = Release|x64
 		{2661A3D0-B981-4AFB-843A-403ABE4DEF82}.Release|x86.ActiveCfg = Release|Win32
 		{2661A3D0-B981-4AFB-843A-403ABE4DEF82}.Release|x86.Build.0 = Release|Win32
+		{9C1BBF58-1670-449B-9DFC-42897630ABBE}.Debug|x64.ActiveCfg = Debug|x64
+		{9C1BBF58-1670-449B-9DFC-42897630ABBE}.Debug|x64.Build.0 = Debug|x64
+		{9C1BBF58-1670-449B-9DFC-42897630ABBE}.Debug|x86.ActiveCfg = Debug|Win32
+		{9C1BBF58-1670-449B-9DFC-42897630ABBE}.Debug|x86.Build.0 = Debug|Win32
+		{9C1BBF58-1670-449B-9DFC-42897630ABBE}.Release|x64.ActiveCfg = Release|x64
+		{9C1BBF58-1670-449B-9DFC-42897630ABBE}.Release|x64.Build.0 = Release|x64
+		{9C1BBF58-1670-449B-9DFC-42897630ABBE}.Release|x86.ActiveCfg = Release|Win32
+		{9C1BBF58-1670-449B-9DFC-42897630ABBE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
