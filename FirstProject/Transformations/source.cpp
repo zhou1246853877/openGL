@@ -1,6 +1,9 @@
 #include "source.h"
 #include "shader.h"
 #include "imgload.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 using namespace std;
 
 float mixAlpha = 0.5;
@@ -61,8 +64,8 @@ int main()
     };
 
     unsigned int indices[] = {
-        0, 1, 3, // first triangle
-        1, 2, 3  // second triangle
+        0, 1, 3,    // first triangle
+        1, 2, 3,    // second triangle
     };
 
     unsigned int VAO;
@@ -148,6 +151,12 @@ int main()
     myShader.setInt("texture2", 1);
     myShader.setFloat("alpha", mixAlpha);
 
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+    
+    unsigned int transformLoc = glGetUniformLocation(myShader.ID, "transform");
+
     //glActiveTexture(GL_TEXTURE0);
     //glBindTexture(GL_TEXTURE_2D, texture1);
     //glActiveTexture(GL_TEXTURE1);
@@ -161,9 +170,27 @@ int main()
 
         //处理输入
         processInput(window);
+        
 
+        //设置uniform变量
         myShader.use();
         myShader.setFloat("alpha", mixAlpha);
+
+        //左上角箱子,不断缩放
+        glm::mat4 trans = glm::mat4(1.0f);
+        float scale_value = (sin(glfwGetTime()) + 1.0f) / 2;
+        trans = glm::scale(trans, glm::vec3(scale_value));
+        trans = glm::translate(trans, glm::vec3(-0.5f, 0.5f, 0.0f));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        //右下角箱子,不断旋转
+        trans = glm::mat4(1.0f);
+        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+        trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
+        trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0, 0.0, 1.0));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
